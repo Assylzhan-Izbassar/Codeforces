@@ -22,8 +22,10 @@ void test_case(){
 int main(){
 
     ios::sync_with_stdio(false);
-
-    test_case();
+    int t = 1; 
+    // cin >> t;
+    while(t--)
+        test_case();
 
     return 0;
 }
