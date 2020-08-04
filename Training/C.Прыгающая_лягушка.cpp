@@ -15,53 +15,33 @@ void print(vector<int> &a){
     cout << endl;
 }
 
-bool f(string s, int x){
-    s.push_back('R');
-    int n = s.size()-1;
-    vector<bool> dp(n+1, 0);
-    dp[x-1] = 1;
-
-    for(int i=0; i <= dp.size(); ++i){
-        if(s[i] == 'L'){
-            for(int j = max(0, i - x); j < i; ++j){
-                if(j - i >= 0){
-                    dp[i] = 1;
-                }
-            }
-        }else{
-            for(int j = i+1; j <= min(n+1, i+x); ++j){
-                if(i + j < n){
-                    dp[j] = 1;
-                }
-            }
-        }
-    }
-    cout << "DP array when d is :" << x << "\n";
-    for(int i=0; i < n+1; ++i){
-        cout << dp[i] << " ";
-    }
-    cout << endl;
-    return dp[n];
-}
-
 void test_case(){
 
     string s;
     cin >> s;
 
-    int l = 0; 
-    int r = s.size()+1;
+    s.insert(s.begin(), 'R');
+    s.push_back('R');
 
-    while(r > l + 1){
-        int x = (r+l)/2;
+    vector<int> distance;
 
-        if(f(s,x)){
-            r = x;
-        }else{
-            l = x;
+    for(int i=0; i < s.size(); ++i){
+        if(s[i] == 'R'){
+            for(int j=i+1; j < s.size(); ++j){
+                if(s[j] == 'R'){
+                    distance.push_back(j-i);
+                    break;
+                }
+            }
         }
     }
-    cout << "answer is: " << r << endl << endl;
+
+    int maxi = distance[0];
+
+    for(int i=1; i < distance.size(); ++i)
+        if(maxi < distance[i]) maxi = distance[i];
+    
+    cout << maxi << endl;
 }
 
 int main(){
