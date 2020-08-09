@@ -1,27 +1,13 @@
 #include <iostream>
-#include <cstdio>
-#include <cstdlib>
 #include <algorithm>
 #include <cmath>
 #include <vector>
 #include <set>
 #include <map>
-#include <unordered_set>
-#include <unordered_map>
-#include <ctime>
-#include <cassert>
-#include <complex>
-#include <string>
-#include <cstring>
-#include <chrono>
-#include <random>
 #include <queue>
-#include <deque>
-#include <bitset>
 
 using namespace std;
 
-#define pb push_back
 typedef long long ll;
 
 void print(vector<int> &a){
@@ -31,8 +17,30 @@ void print(vector<int> &a){
     cout << endl;
 }
 
+int f_gcd (int a, int b) {
+	while (b) {
+		a %= b;
+		swap (a, b);
+	}
+	return a;
+}
+void optimal_solution(int n){
+    cout << n / 2 << endl;
+}
 void test_case(){
+    int n;
+    cin >> n;
 
+    int maxi = -1;
+
+    for(int i=1; i < n; ++i){
+        int a = i;
+        int b = i*2 <= n ? i*2 : i+1;
+        int gcd = f_gcd(a,b);
+        if(gcd > maxi)
+            maxi = gcd;
+    }
+    cout << maxi << endl;
 }
 
 int main(){
@@ -43,11 +51,8 @@ int main(){
     #endif
 
     ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-
     int t = 1; 
-    // cin >> t;
+    cin >> t;
     while(t--)
         test_case();
 
