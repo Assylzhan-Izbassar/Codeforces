@@ -39,7 +39,13 @@ void print(vector<ll> &a){
 }
 
 void test_case(){
+    string s;
+    cin >> s;
 
+    for(int i=0; i < s.size(); ++i){
+        vector<string> a(s.size() - i - 1);
+        
+    }
 }
 
 int main(){
