@@ -51,7 +51,28 @@ void print(vector<ll> &a){
 }
 
 void test_case(){
+    int n;
+    cin >> n;
 
+    string s; 
+    cin >> s;
+
+    vi p(n+1);
+
+    rep(i, 0, n){
+        p[i+1] = (s[i] - '0') + p[i];
+    }
+
+    map<int, int> dp;
+
+    ll ans = 0;
+    dp[0] = 1;
+
+    rep(i, 1, n+1){
+        ans += dp[p[i]-i];
+        dp[p[i]-i]++;
+    }
+    cout << ans << endl;
 }
 
 int main(){
@@ -66,7 +87,7 @@ int main(){
     cout.tie(nullptr);
 
     int t = 1; 
-    // cin >> t;
+    cin >> t;
     while(t--)
         test_case();
 

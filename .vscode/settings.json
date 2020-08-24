@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "g++": "-std=c++11",
+        "vector": "cpp"
+    }
+}

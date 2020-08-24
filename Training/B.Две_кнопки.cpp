@@ -43,15 +43,41 @@ void print(vector<int> &a){
     }
     cout << endl;
 }
-void print(vector<ll> &a){
-    for(int i=0; i < a.size(); ++i){
-        cout << a[i] << " ";
+
+int n, m;
+
+vi dist(4*1e4);
+vb used(4*1e4);
+queue<int> q;
+
+void bfs(int x){
+
+    dist[x] = 0;
+    used[x] = true;
+    q.push(x);
+
+    while(!q.empty()){
+        int i = q.front();
+        q.pop();
+
+        if(i > 0 && !used[i-1]){
+            dist[i-1] = dist[i] + 1;
+            used[i-1] = true;
+            q.push(i-1);
+        }
+        if(i <= m && !used[i+i]){
+            dist[i+i] = dist[i] + 1;
+            used[i+i] = true;
+            q.push(i+i);
+        }
     }
-    cout << endl;
 }
 
 void test_case(){
 
+    cin >> n >> m;
+    bfs(n);
+    cout << dist[m] << endl;
 }
 
 int main(){
