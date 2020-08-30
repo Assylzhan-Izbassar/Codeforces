@@ -51,8 +51,37 @@ void print(vector<ll> &a){
     cout << endl;
 }
 
-void test_case(){
+//4
+//1 4 1 1
+//  ||
+//1 2 2 2 2 3 4
 
+const int INF = 1e9;
+vi a;
+int f(int l, int r){
+    if(l > r) return 0;
+
+    int mini = INF, indx = -1;
+
+    rep(i, l, r+1){
+        if(a[i] < mini){
+            mini = a[i];
+            indx = i;
+        }
+    }
+    rep(i, l, r+1){
+        a[i] -= mini;
+    }
+    return min(r-l+1, f(l, indx-1) + f(indx+1, r) + mini);
+
+}
+void test_case(){
+    int n;
+    cin >> n;
+    a = vi(n+1);
+    rep(i, 1, n+1) cin >> a[i];
+
+    cout << f(1, n) << endl;
 }
 
 int main(){

@@ -52,6 +52,32 @@ void print(vector<ll> &a){
 }
 
 void test_case(){
+    int n;
+    cin >> n;
+
+    vi a(n);
+
+    rep(i, 0, n) cin >> a[i];
+
+    vi l(n, 1);
+    vi r(n, 1);
+
+    int ans = 1;
+
+    rrep(i, 0, n-1){
+        if(a[i+1] > a[i]) r[i] = r[i+1] + 1;
+        ans = max(ans, r[i]);
+    }
+
+    rep(i, 1, n){
+        if(a[i-1] < a[i]) l[i] = l[i-1] + 1;
+        ans = max(ans, l[i]);
+    }
+
+    rep(i, 0, n-2){
+        if(a[i] < a[i+2])ans = max(ans, l[i] + r[i+2]);
+    }
+    cout << ans << endl;
 
 }
 

@@ -27,8 +27,7 @@ using namespace std;
 #define sz(c) (int)((c).size())
 #define all(c) c.begin(),c.end()
 #define rep(i,a,n) for (int i = a; i < n; i++)
-#define rrep(i,a,n) for(int i = n-1; i >= 0; --i)
-#define each(x, a) for(auto x : a)
+#define rrep(i,n,a) for(int i = n-1; i >= a; --i)
 #define fi first
 #define se second
 
@@ -37,6 +36,7 @@ typedef vector<int> vi;
 typedef vector<bool> vb;
 typedef pair<int, int> pii;
 typedef tuple<int, int, int> tp;
+
 
 void print(vector<int> &a){
     for(int i=0; i < a.size(); ++i){
@@ -52,7 +52,31 @@ void print(vector<ll> &a){
 }
 
 void test_case(){
+    int n;
+    cin >> n;
 
+    vi a(n);
+    int N = -1e9;
+    rep(i, 0, n){
+        cin >> a[i];
+        if(a[i] > N)
+            N = a[i];
+    }
+
+    vi cntLeft(N+1, 0);
+    vi cntRight(N+1, 0); 
+
+    ll ans = 0;
+
+    rep(j, 0, n){
+        fill(all(cntRight), 0);
+        rrep(k, n, j+1){
+            ans += (ll)cntLeft[a[k]] * cntRight[a[j]];
+            cntRight[a[k]]++;
+        }
+        cntLeft[a[j]]++;
+    }
+    cout << ans << endl;
 }
 
 int main(){
@@ -67,7 +91,7 @@ int main(){
     cout.tie(nullptr);
 
     int t = 1; 
-    // cin >> t;
+    cin >> t;
     while(t--)
         test_case();
 

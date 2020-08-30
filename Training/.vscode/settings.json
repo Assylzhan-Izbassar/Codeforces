@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "g++": "-std=c++11",
         "set": "cpp",
         "algorithm": "cpp",
         "map": "cpp",
@@ -62,6 +63,13 @@
         "typeinfo": "cpp",
         "unordered_map": "cpp",
         "utility": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "deque": "cpp",
+        "iomanip": "cpp",
+        "numeric": "cpp",
+        "queue": "cpp",
+        "random": "cpp",
+        "stack": "cpp",
+        "unordered_set": "cpp"
     }
 }

@@ -52,7 +52,33 @@ void print(vector<ll> &a){
 }
 
 void test_case(){
+    int n;
+    cin >> n;
 
+    vi a(n);
+    rep(i, 0, n) cin >> a[i];
+
+    int cnt = 0;
+    int ans = 0;
+
+    rep(s, 1, 101){
+        vb used(n, false);
+        cnt = 0;
+        rep(l, 0, n){
+            if(used[l]) continue;
+            used[l] = true;
+            rep(r, 0, n){
+                if(!used[r] && a[l] + a[r] == s){
+                    cnt++;
+                    used[r] = true;
+                    break;
+                }
+            }
+        }
+        // cout << cnt << " " << s << endl;
+        ans = max(ans, cnt);
+    }
+    cout << ans << endl;
 }
 
 int main(){
@@ -67,7 +93,7 @@ int main(){
     cout.tie(nullptr);
 
     int t = 1; 
-    // cin >> t;
+    cin >> t;
     while(t--)
         test_case();
 

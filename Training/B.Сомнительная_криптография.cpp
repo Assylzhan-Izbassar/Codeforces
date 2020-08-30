@@ -51,8 +51,28 @@ void print(vector<ll> &a){
     cout << endl;
 }
 
+bool f(int b, int t){
+    if(b - t > 0){
+        return true;
+    }
+    return false;
+}
 void test_case(){
+    int l, r;
+    cin >> l >> r;
+    ll m;
+    cin >> m;
 
+    rep(a, l, r+1){
+        if(a - m%a <= r-l){ 
+            cout<< a << " " << l << " " << l+a-m%a << "\n"; 
+            break;
+        }
+		if(m % a <= r-l){
+            cout << a << " " << l + m%a << " " << l << "\n"; 
+            break;
+        }
+    }
 }
 
 int main(){
@@ -67,7 +87,7 @@ int main(){
     cout.tie(nullptr);
 
     int t = 1; 
-    // cin >> t;
+    cin >> t;
     while(t--)
         test_case();
 
