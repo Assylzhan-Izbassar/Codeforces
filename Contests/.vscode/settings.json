@@ -21,6 +21,7 @@
         "unordered_set": "cpp",
         "utility": "cpp",
         "vector": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "ostream": "cpp"
     }
 }
