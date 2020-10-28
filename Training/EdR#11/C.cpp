@@ -35,8 +35,38 @@ int main(){
 
     vi a(n);
 
-    rep(i, 0, n)
-        cin >> a[i];
+    rep(i, 0, n) cin >> a[i];
+
+    int l = 0;
+    int zeros = 0;
+    int res = 0;
+    int gl, gr;
+
+    for(int r = 0; r < n; ++r){
+        if(a[r] == 0)
+            zeros++;
+        while(zeros > k){
+            if(a[l] == 0)
+                zeros--;
+            l++;
+        }
+        if(res < r-l+1){
+            res = r-l+1;
+            gl = l; gr = r;
+        }
+    }
+    cout << res << endl;
+
+    rep(i, 0, n){
+        if(i >= gl && i <= gr){
+            if(a[i] == 0 && k > 0){
+                a[i] = 1;
+                k--;
+            }
+        }
+        cout << a[i] << " ";
+    }
+    cout << endl;
 
     return 0;
 }
