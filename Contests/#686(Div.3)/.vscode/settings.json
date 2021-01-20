@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "g++": "-std=c++11",
+        "type_traits": "cpp",
+        "iostream": "cpp",
+        "__tree": "cpp",
+        "map": "cpp",
+        "vector": "cpp"
+    }
+}
