@@ -3,6 +3,7 @@
         "g++": "-std=c++11",
         "iostream": "cpp",
         "vector": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "set": "cpp"
     }
 }
