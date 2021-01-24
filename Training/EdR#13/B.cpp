@@ -12,22 +12,33 @@ typedef long long ll;
 typedef vector<int> vi;
 typedef vector<bool> vb;
 
+bool isLeap(int y){
+    if(y % 4 != 0){
+        return false;
+    }else if(y % 100 != 0){
+        return true;
+    }else if(y % 400 != 0){
+        return false;
+    }
+    return true;
+}
+
 int main(){
 
     int y;
     cin >> y;
 
-    if(y % 4 != 0){
-        cout << y + 6;
-    }else if(y % 100 != 0){
-        cout << y + 28;
-    }else if(y % 400 != 0){
-        cout << y + 6;
-    }else{
-        cout << y + 28;
-    }
+    int date = 0;
+    bool is_Leap = isLeap(y);
 
-    cout << endl;
+    do{
+        date++;
+        if(isLeap(y)) date++;
+        y++;
+        date %= 7;
+    }while(date || !isLeap(y));
+
+    cout << y << endl;
 
     return 0;
 }
